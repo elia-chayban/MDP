@@ -3,10 +3,10 @@
     {% for post in posts %}
         <article class="media content-section">
           <div class="media-body">
-            <div class="article-metadata">
-            <h1><a class="article-title">{{ post.list_name }}</a></h1>
-            <h2><a class="article-content" href=/voteregistered >{{ post.Candidat_1 }}</a>></h2>
-            <h2><a class="article-content" href=/voteregistered >{{ post.Candidat_2 }}</a>></h2>
+            <div class="metadata">
+            <h1><a class="title">{{ post.list_name }}</a></h1>
+            <h2><a class="content" href=/voteregistered >{{ post.Candidat_1 }}</a>></h2>
+            <h2><a class="content" href=/voteregistered >{{ post.Candidat_2 }}</a>></h2>
           </div>
         </article>
     {% endfor %}
