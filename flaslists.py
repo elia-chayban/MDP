@@ -9,11 +9,6 @@ posts = [
         'list_name2': 'list 2',
         'list_name3': 'list 3'
     },
-    {
-        'id1': '1',
-        'id2': '2',
-        'id3': '3'
-    }
 ]
 
 data1 = [
@@ -63,18 +58,33 @@ def list3():
 def voteregistered():
     return render_template('voteregistered.html')
 
-@app.route('/encryption')
-def encryption():
+# @app.route('/', methods=["GET","POST"])
+# def home(): 
+    #  request = posts
+    # if request.method == 'POST':
+    #     if request.form['list_name'] == post_id:   
+    #         mystring = "http://www.localhost:5000/encryption/" + request[1]
+           
+        #     c.execute(sql, (post_id,))
+        #     return redirect("/")
+
+        # else  
+        #     mystring = "http://www.localhost:5000/encryption/" + requestcandidta[1]
+        #     c.execute(sql, (post_id,))
+        #     return redirect("/")
+
+@app.route('/encryption/<value>')
+def encryption(value):
     s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((socket.gethostname(), 3600))
-    s.send(bytes("Data on wich encryption should be applied on", "utf-8"))
-    complete_info =''
+    s.connect(("10.252.296.141", 3600))
+    s.send(bytes(value, "utf-8"))
+    complete_info = ''
     while True:
         msg=s.recv(1024)
         if len(msg)<=0 :
             break
         complete_info += msg.decode("utf-8")
-    return(complete_info)
+        return(complete_info)
 
 if __name__ == '__main__':
     app.run(debug=True)
